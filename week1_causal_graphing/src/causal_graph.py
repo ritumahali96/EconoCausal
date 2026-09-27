@@ -44,3 +44,6 @@ print(identified_estimand)
 # DoWhy's answer: to isolate the true effect of discount_given on
 # purchased, you must control for loyalty_score and income.
 # age does NOT need to be controlled for.
+
+import networkx as nx
+import matplotlib.pyplot as plt
