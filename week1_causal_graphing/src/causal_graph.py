@@ -60,3 +60,11 @@ edges = [
 ]
 
 G.add_edges_from(edges)
+
+pos = {
+    "loyalty_score": (0, 2),
+    "income": (0, 1),
+    "age": (0, 0),
+    "discount_given": (2, 1.5),
+    "purchased": (4, 1),
+}
