@@ -24,3 +24,8 @@ graph [
     edge [ source "discount_given" target "purchased" ]
 ]
 """
+
+# NOTE: loyalty_score and income each have TWO outgoing arrows
+# (into discount_given AND purchased) -- that double-arrow pattern
+# is the signature of a confounder. age has only one arrow, so it's
+# a normal cause, not a confounder.
