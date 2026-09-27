@@ -11,3 +11,5 @@ import numpy as np
 import pandas as pd
 
 np.random.seed(42)
+
+n_customers = 2000
