@@ -90,3 +90,5 @@ df = pd.DataFrame({
     "discount_given": discount_given,
     "purchased": purchased,
 })
+
+df.to_csv("data/retail_campaign_data.csv", index=False)
