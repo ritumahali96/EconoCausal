@@ -36,3 +36,5 @@ model = CausalModel(
     outcome="purchased",
     graph=causal_graph,
 )
+
+identified_estimand = model.identify_effect(proceed_when_unidentifiable=True)
