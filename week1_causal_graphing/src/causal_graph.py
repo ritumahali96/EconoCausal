@@ -77,3 +77,5 @@ for node in G.nodes():
         node_colors.append("#2a9d8f")
     else:
         node_colors.append("#8ecae6")
+
+plt.figure(figsize=(9, 5))
