@@ -87,3 +87,9 @@ nx.draw(
 )
 
 plt.figure(figsize=(9, 5))
+
+nx.draw(
+    G, pos, with_labels=True, node_color=node_colors, node_size=3200,
+    font_size=9, font_weight="bold", arrowsize=25, edge_color="#555555",
+    width=1.8,
+)
