@@ -52,3 +52,5 @@ base_purchase_prob = 0.10  # baseline chance, everyone starts here
 base_purchase_prob += 0.55 * loyalty_score  # confounder -> outcome
 
 base_purchase_prob += 0.002 * income  # confounder -> outcome
+
+base_purchase_prob += true_effect_per_10_dollars * (discount_given / 10)  # TRUE treatment effect
