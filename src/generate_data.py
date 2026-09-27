@@ -22,3 +22,7 @@ income = np.random.normal(60, 20, n_customers).clip(15, 200)
 
 # age: not a confounder here, just a normal cause of purchase
 age = np.random.normal(38, 12, n_customers).clip(18, 80)
+
+# NOTE: loyalty_score and income are CONFOUNDERS -- they affect both
+# who gets a bigger discount AND who buys anyway. age is NOT a
+# confounder -- it affects purchase but not discount assignment.
