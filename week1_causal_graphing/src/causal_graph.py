@@ -49,3 +49,12 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 G = nx.DiGraph()
+
+edges = [
+    ("loyalty_score", "discount_given"),
+    ("loyalty_score", "purchased"),
+    ("income", "discount_given"),
+    ("income", "purchased"),
+    ("age", "purchased"),
+    ("discount_given", "purchased"),
+]
