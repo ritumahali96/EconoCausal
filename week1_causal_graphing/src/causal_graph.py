@@ -93,3 +93,5 @@ nx.draw(
     font_size=9, font_weight="bold", arrowsize=25, edge_color="#555555",
     width=1.8,
 )
+
+plt.title("EconoCausal Week 1: Causal DAG", fontsize=11)
