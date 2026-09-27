@@ -52,3 +52,39 @@ base_purchase_prob = 0.10  # baseline chance, everyone starts here
 base_purchase_prob += 0.55 * loyalty_score  # confounder -> outcome
 
 base_purchase_prob += 0.002 * income  # confounder -> outcome
+
+base_purchase_prob += true_effect_per_10_dollars * (discount_given / 10)  # TRUE treatment effect
+
+base_purchase_prob = np.clip(base_purchase_prob, 0.01, 0.99)
+
+purchased = np.random.binomial(1, base_purchase_prob)
+
+customer_id = range(1, n_customers + 1)
+
+df = pd.DataFrame({
+    "customer_id": customer_id,
+    "age": age.round(1),
+    "income": income.round(1),
+    "loyalty_score": loyalty_score.round(3),
+    "discount_given": discount_given,
+    "purchased": purchased,
+})
+
+df.to_csv("data/retail_campaign_data.csv", index=False)
+
+print("Saved data/retail_campaign_data.csv")
+
+print(df.head(8))
+
+print("\n--- Naive (WRONG) correlation view ---")
+print(df.groupby("discount_given")["purchased"].mean())
+
+# The gap you see above between $0 and $20 groups is BIGGER than our
+# real, secret 8-point effect (0.04 * 2) -- that extra gap is the
+# loyalty/income confounder leaking into the naive average.
+
+assert set(purchased) <= {0, 1}, "purchased must only contain 0 or 1"
+
+assert set(discount_given) <= {0, 10, 20}, "discount_given must only be 0, 10, or 20"
+
+assert df.isnull().sum().sum() == 0, "dataframe must not contain missing values"
