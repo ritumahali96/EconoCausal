@@ -43,3 +43,6 @@ discount_given = np.array([
 # NOTE: this is NOT a random A/B test. Higher-propensity customers are
 # more likely to land on a bigger discount -- this bias is exactly what
 # confuses naive ML and what DoWhy must correct for later.
+
+# The REAL, secret causal effect we're hiding inside the data:
+true_effect_per_10_dollars = 0.04
