@@ -11,3 +11,4 @@ causal_graph = """
 graph [
     directed 1
     node [ id "loyalty_score"   label "loyalty_score" ]
+    node [ id "income"          label "income" ]
