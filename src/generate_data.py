@@ -46,3 +46,5 @@ discount_given = np.array([
 
 # The REAL, secret causal effect we're hiding inside the data:
 true_effect_per_10_dollars = 0.04
+
+base_purchase_prob = 0.10  # baseline chance, everyone starts here
