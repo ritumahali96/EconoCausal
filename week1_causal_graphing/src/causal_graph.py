@@ -44,3 +44,66 @@ print(identified_estimand)
 # DoWhy's answer: to isolate the true effect of discount_given on
 # purchased, you must control for loyalty_score and income.
 # age does NOT need to be controlled for.
+
+import networkx as nx
+import matplotlib.pyplot as plt
+
+G = nx.DiGraph()
+
+edges = [
+    ("loyalty_score", "discount_given"),
+    ("loyalty_score", "purchased"),
+    ("income", "discount_given"),
+    ("income", "purchased"),
+    ("age", "purchased"),
+    ("discount_given", "purchased"),
+]
+
+G.add_edges_from(edges)
+
+pos = {
+    "loyalty_score": (0, 2),
+    "income": (0, 1),
+    "age": (0, 0),
+    "discount_given": (2, 1.5),
+    "purchased": (4, 1),
+}
+
+node_colors = []
+for node in G.nodes():
+    if node == "discount_given":
+        node_colors.append("#ffb703")
+    elif node == "purchased":
+        node_colors.append("#2a9d8f")
+    else:
+        node_colors.append("#8ecae6")
+
+plt.figure(figsize=(9, 5))
+
+nx.draw(
+    G, pos, with_labels=True, node_color=node_colors, node_size=3200,
+    font_size=9, font_weight="bold", arrowsize=25, edge_color="#555555",
+    width=1.8,
+)
+
+plt.figure(figsize=(9, 5))
+
+nx.draw(
+    G, pos, with_labels=True, node_color=node_colors, node_size=3200,
+    font_size=9, font_weight="bold", arrowsize=25, edge_color="#555555",
+    width=1.8,
+)
+
+plt.title("EconoCausal Week 1: Causal DAG", fontsize=11)
+
+plt.tight_layout()
+
+plt.savefig("week1_causal_graphing/docs/causal_dag.png", dpi=150)
+
+print("Saved week1_causal_graphing/docs/causal_dag.png")
+
+# NEXT STEP (Week 2 preview): DoWhy can add a FAKE random confounder
+# and re-run the estimate. If the number barely changes, that's
+# evidence the model is robust. This is a "Refutation Test".
+
+assert "discount_given" in causal_graph and "purchased" in causal_graph, "graph must mention treatment and outcome"
