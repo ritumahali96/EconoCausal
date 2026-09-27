@@ -86,3 +86,5 @@ print(df.groupby("discount_given")["purchased"].mean())
 assert set(purchased) <= {0, 1}, "purchased must only contain 0 or 1"
 
 assert set(discount_given) <= {0, 10, 20}, "discount_given must only be 0, 10, or 20"
+
+assert df.isnull().sum().sum() == 0, "dataframe must not contain missing values"
