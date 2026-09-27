@@ -29,3 +29,10 @@ graph [
 # (into discount_given AND purchased) -- that double-arrow pattern
 # is the signature of a confounder. age has only one arrow, so it's
 # a normal cause, not a confounder.
+
+model = CausalModel(
+    data=df,
+    treatment="discount_given",
+    outcome="purchased",
+    graph=causal_graph,
+)
