@@ -58,3 +58,5 @@ edges = [
     ("age", "purchased"),
     ("discount_given", "purchased"),
 ]
+
+G.add_edges_from(edges)
