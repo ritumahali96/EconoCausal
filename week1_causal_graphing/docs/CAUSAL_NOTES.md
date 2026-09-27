@@ -12,3 +12,6 @@ identify_effect() read our DAG and confirmed: to isolate the true
 effect of discount_given on purchased, control for loyalty_score
 and income. age does not need to be controlled for, since it only
 affects the outcome, not the treatment.
+
+Status: Causal graphing complete. Next: Week 2 Double ML training
+to estimate Individual Treatment Effect (ITE).
