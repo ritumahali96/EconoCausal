@@ -38,3 +38,5 @@ model = CausalModel(
 )
 
 identified_estimand = model.identify_effect(proceed_when_unidentifiable=True)
+
+print(identified_estimand)
