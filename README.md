@@ -1,13 +1,5 @@
-# EconoCausal — Week 1: Building the Mock Retail Dataset
+# EconoCausal
 
-## How to run
-\`\`\`bash
-pip install -r requirements.txt
-python3 src/generate_data.py
-\`\`\`
-
-## Contributors
-- Ritu Mahali — dataset simulation logic
-- Harshita — outcome simulation, CSV export, tests, docs
-
-Status: Mock dataset generation complete. Next: causal DAG with DoWhy.
+## Week 1
+- week1_causal_graphing/ -- mock dataset + causal DAG (DoWhy). Complete.
+- week1_dashboard_scaffolding/ -- React dashboard skeleton. Not started yet.
