@@ -92,3 +92,5 @@ df = pd.DataFrame({
 })
 
 df.to_csv("data/retail_campaign_data.csv", index=False)
+
+print("Saved data/retail_campaign_data.csv")
