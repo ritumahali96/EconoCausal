@@ -58,3 +58,5 @@ base_purchase_prob += true_effect_per_10_dollars * (discount_given / 10)  # TRUE
 base_purchase_prob = np.clip(base_purchase_prob, 0.01, 0.99)
 
 purchased = np.random.binomial(1, base_purchase_prob)
+
+customer_id = range(1, n_customers + 1)
