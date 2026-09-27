@@ -60,3 +60,12 @@ base_purchase_prob = np.clip(base_purchase_prob, 0.01, 0.99)
 purchased = np.random.binomial(1, base_purchase_prob)
 
 customer_id = range(1, n_customers + 1)
+
+df = pd.DataFrame({
+    "customer_id": customer_id,
+    "age": age.round(1),
+    "income": income.round(1),
+    "loyalty_score": loyalty_score.round(3),
+    "discount_given": discount_given,
+    "purchased": purchased,
+})
