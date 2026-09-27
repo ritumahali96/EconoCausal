@@ -13,3 +13,4 @@ graph [
     node [ id "loyalty_score"   label "loyalty_score" ]
     node [ id "income"          label "income" ]
     node [ id "age"              label "age" ]
+    node [ id "discount_given"  label "discount_given" ]
