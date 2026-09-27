@@ -101,3 +101,7 @@ plt.tight_layout()
 plt.savefig("week1_causal_graphing/docs/causal_dag.png", dpi=150)
 
 print("Saved week1_causal_graphing/docs/causal_dag.png")
+
+# NEXT STEP (Week 2 preview): DoWhy can add a FAKE random confounder
+# and re-run the estimate. If the number barely changes, that's
+# evidence the model is robust. This is a "Refutation Test".
