@@ -1,1 +1,1 @@
-# EconoCausal — Week 1: Building the Mock Dataset
+# EconoCausal — Week 1: Building the Mock Retail Dataset
