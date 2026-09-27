@@ -17,3 +17,4 @@ graph [
     node [ id "purchased"       label "purchased" ]
 
     edge [ source "loyalty_score"  target "discount_given" ]
+    edge [ source "loyalty_score"  target "purchased" ]
