@@ -77,3 +77,5 @@ print("Saved data/retail_campaign_data.csv")
 print(df.head(8))
 
 base_purchase_prob = np.clip(base_purchase_prob, 0.01, 0.99)
+
+purchased = np.random.binomial(1, base_purchase_prob)
