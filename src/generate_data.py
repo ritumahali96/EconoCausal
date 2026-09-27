@@ -102,3 +102,6 @@ print(df.groupby("discount_given")["purchased"].mean())
 
 print("\n--- Naive (WRONG) correlation view ---")
 print(df.groupby("discount_given")["purchased"].mean())
+
+print("\n--- Naive (WRONG) correlation view ---")
+print(df.groupby("discount_given")["purchased"].mean())
