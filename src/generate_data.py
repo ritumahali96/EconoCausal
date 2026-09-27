@@ -31,3 +31,11 @@ age = np.random.normal(38, 12, n_customers).clip(18, 80)
 discount_propensity = 0.3 * loyalty_score + 0.002 * income
 
 discount_options = np.array([0, 10, 20])  # dollars
+
+discount_given = np.array([
+    np.random.choice(
+        discount_options,
+        p=(w := np.clip([0.6 - 0.5 * prop, 0.25, 0.15 + 0.5 * prop], 0.01, None)) / w.sum()
+    )
+    for prop in discount_propensity
+])
