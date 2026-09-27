@@ -19,3 +19,4 @@ graph [
     edge [ source "loyalty_score"  target "discount_given" ]
     edge [ source "loyalty_score"  target "purchased" ]
     edge [ source "income"         target "discount_given" ]
+    edge [ source "income"         target "purchased" ]
