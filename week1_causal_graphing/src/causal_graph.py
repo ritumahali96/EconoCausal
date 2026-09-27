@@ -105,3 +105,5 @@ print("Saved week1_causal_graphing/docs/causal_dag.png")
 # NEXT STEP (Week 2 preview): DoWhy can add a FAKE random confounder
 # and re-run the estimate. If the number barely changes, that's
 # evidence the model is robust. This is a "Refutation Test".
+
+assert "discount_given" in causal_graph and "purchased" in causal_graph, "graph must mention treatment and outcome"
