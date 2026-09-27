@@ -9,3 +9,5 @@ check whether our causal model finds that same true number.
 
 import numpy as np
 import pandas as pd
+
+np.random.seed(42)
