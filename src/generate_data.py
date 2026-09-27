@@ -39,3 +39,7 @@ discount_given = np.array([
     )
     for prop in discount_propensity
 ])
+
+# NOTE: this is NOT a random A/B test. Higher-propensity customers are
+# more likely to land on a bigger discount -- this bias is exactly what
+# confuses naive ML and what DoWhy must correct for later.
