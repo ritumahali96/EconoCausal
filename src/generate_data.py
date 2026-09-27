@@ -96,3 +96,6 @@ df.to_csv("data/retail_campaign_data.csv", index=False)
 print("Saved data/retail_campaign_data.csv")
 
 print(df.head(8))
+
+print("\n--- Naive (WRONG) correlation view ---")
+print(df.groupby("discount_given")["purchased"].mean())
