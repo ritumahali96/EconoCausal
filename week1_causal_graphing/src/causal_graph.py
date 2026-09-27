@@ -97,3 +97,5 @@ nx.draw(
 plt.title("EconoCausal Week 1: Causal DAG", fontsize=11)
 
 plt.tight_layout()
+
+plt.savefig("week1_causal_graphing/docs/causal_dag.png", dpi=150)
