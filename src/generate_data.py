@@ -82,3 +82,5 @@ print(df.groupby("discount_given")["purchased"].mean())
 # The gap you see above between $0 and $20 groups is BIGGER than our
 # real, secret 8-point effect (0.04 * 2) -- that extra gap is the
 # loyalty/income confounder leaking into the naive average.
+
+assert set(purchased) <= {0, 1}, "purchased must only contain 0 or 1"
