@@ -22,3 +22,5 @@ graph [
     edge [ source "income"         target "purchased" ]
     edge [ source "age"            target "purchased" ]
     edge [ source "discount_given" target "purchased" ]
+]
+"""
