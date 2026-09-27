@@ -68,3 +68,12 @@ pos = {
     "discount_given": (2, 1.5),
     "purchased": (4, 1),
 }
+
+node_colors = []
+for node in G.nodes():
+    if node == "discount_given":
+        node_colors.append("#ffb703")
+    elif node == "purchased":
+        node_colors.append("#2a9d8f")
+    else:
+        node_colors.append("#8ecae6")
