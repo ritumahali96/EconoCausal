@@ -47,3 +47,5 @@ print(identified_estimand)
 
 import networkx as nx
 import matplotlib.pyplot as plt
+
+G = nx.DiGraph()
