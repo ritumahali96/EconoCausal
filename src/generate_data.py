@@ -78,3 +78,7 @@ print(df.head(8))
 
 print("\n--- Naive (WRONG) correlation view ---")
 print(df.groupby("discount_given")["purchased"].mean())
+
+# The gap you see above between $0 and $20 groups is BIGGER than our
+# real, secret 8-point effect (0.04 * 2) -- that extra gap is the
+# loyalty/income confounder leaking into the naive average.
