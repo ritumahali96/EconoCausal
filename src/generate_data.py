@@ -56,3 +56,5 @@ base_purchase_prob += 0.002 * income  # confounder -> outcome
 base_purchase_prob += true_effect_per_10_dollars * (discount_given / 10)  # TRUE treatment effect
 
 base_purchase_prob = np.clip(base_purchase_prob, 0.01, 0.99)
+
+purchased = np.random.binomial(1, base_purchase_prob)
