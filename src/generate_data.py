@@ -84,3 +84,5 @@ print(df.groupby("discount_given")["purchased"].mean())
 # loyalty/income confounder leaking into the naive average.
 
 assert set(purchased) <= {0, 1}, "purchased must only contain 0 or 1"
+
+assert set(discount_given) <= {0, 10, 20}, "discount_given must only be 0, 10, or 20"
