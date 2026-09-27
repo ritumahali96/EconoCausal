@@ -29,3 +29,5 @@ age = np.random.normal(38, 12, n_customers).clip(18, 80)
 
 # discount_propensity: combines loyalty + income into one bias score
 discount_propensity = 0.3 * loyalty_score + 0.002 * income
+
+discount_options = np.array([0, 10, 20])  # dollars
