@@ -48,3 +48,5 @@ discount_given = np.array([
 true_effect_per_10_dollars = 0.04
 
 base_purchase_prob = 0.10  # baseline chance, everyone starts here
+
+base_purchase_prob += 0.55 * loyalty_score  # confounder -> outcome
