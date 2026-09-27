@@ -14,3 +14,4 @@ graph [
     node [ id "income"          label "income" ]
     node [ id "age"              label "age" ]
     node [ id "discount_given"  label "discount_given" ]
+    node [ id "purchased"       label "purchased" ]
