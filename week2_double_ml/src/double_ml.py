@@ -64,3 +64,8 @@ est_cf = CausalForestDML(
 est_cf.fit(Y=df["purchased"], T=df["treated"], X=df[["loyalty_score", "income"]])
 ate_cf = est_cf.ate(df[["loyalty_score", "income"]])
 print(f"CausalForestDML estimated ATE: {ate_cf:.4f}")
+
+# Finding: CausalForestDML's ATE is similar to LinearDML's, both still
+# below the true value. This suggests the gap is driven by data
+# overlap, not estimator choice -- no model can fully compensate for
+# weak overlap between treated/untreated groups on confounders.
