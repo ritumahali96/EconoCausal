@@ -86,3 +86,6 @@ print(f"Customers with income > 100: {(df['income'] > 100).sum()} out of {len(df
 # the model little data there. Combined with a true effect that does
 # NOT vary by income/loyalty, this confirms individual ITE values carry
 # real noise -- decile-level grouping (next) is needed to see signal.
+
+df["decile"] = pd.qcut(df["ite"], 10, labels=False, duplicates="drop")
+df["decile"] = 9 - df["decile"]
