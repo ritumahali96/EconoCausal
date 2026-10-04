@@ -111,3 +111,6 @@ plt.xlabel("Decile (0 = highest predicted ITE / best targets, 9 = lowest)")
 plt.ylabel("Observed uplift (treated - untreated purchase rate)")
 plt.title("Uplift by ITE Decile")
 plt.tight_layout()
+
+plt.savefig("week2_double_ml/docs/uplift_chart.png", dpi=150)
+print("Saved week2_double_ml/docs/uplift_chart.png")
