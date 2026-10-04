@@ -71,3 +71,6 @@ print(f"CausalForestDML estimated ATE: {ate_cf:.4f}")
 # weak overlap between treated/untreated groups on confounders.
 
 df["ite"] = est_cf.effect(df[["loyalty_score", "income"]])
+
+print(df[["customer_id", "loyalty_score", "income", "discount_given", "ite"]]
+      .sort_values("ite", ascending=False).head(10))
