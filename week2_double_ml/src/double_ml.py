@@ -120,3 +120,9 @@ cum_treated_purchases = (df_sorted["treated"] * df_sorted["purchased"]).cumsum()
 cum_untreated_purchases = ((1 - df_sorted["treated"]) * df_sorted["purchased"]).cumsum()
 cum_treated_count = df_sorted["treated"].cumsum()
 cum_untreated_count = (1 - df_sorted["treated"]).cumsum()
+
+qini = cum_treated_purchases - cum_untreated_purchases * (
+    cum_treated_count / cum_untreated_count.replace(0, np.nan)
+)
+qini = qini.fillna(0)
+random_baseline = np.linspace(0, qini.iloc[-1], len(qini))
