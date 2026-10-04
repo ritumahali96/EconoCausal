@@ -10,3 +10,5 @@ df["treated"] = (df["discount_given"] > 0).astype(int)
 # work most cleanly with binary or continuous treatment.
 
 from econml.dml import LinearDML
+
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
