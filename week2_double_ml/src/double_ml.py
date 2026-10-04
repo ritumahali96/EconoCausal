@@ -94,3 +94,5 @@ uplift_by_decile = df.groupby("decile", group_keys=False).apply(
     lambda g: g.loc[g["treated"] == 1, "purchased"].mean() - g.loc[g["treated"] == 0, "purchased"].mean(),
     include_groups=False,
 )
+
+print(uplift_by_decile.sort_index())
