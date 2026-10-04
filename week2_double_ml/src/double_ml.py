@@ -100,3 +100,14 @@ print(uplift_by_decile.sort_index())
 # Finding: uplift trends downward from decile 0 to decile 9 overall,
 # confirming the model's ranking carries real signal, despite
 # individual-level noise -- exactly why grouping matters for evaluation.
+
+import matplotlib.pyplot as plt
+
+sorted_uplift = uplift_by_decile.sort_index()
+plt.figure(figsize=(8, 5))
+plt.bar(sorted_uplift.index.astype(str), sorted_uplift.values, color="#2a9d8f")
+plt.axhline(0, color="black", linewidth=0.8)
+plt.xlabel("Decile (0 = highest predicted ITE / best targets, 9 = lowest)")
+plt.ylabel("Observed uplift (treated - untreated purchase rate)")
+plt.title("Uplift by ITE Decile")
+plt.tight_layout()
