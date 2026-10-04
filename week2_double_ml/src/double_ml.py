@@ -60,3 +60,7 @@ est_cf = CausalForestDML(
     discrete_treatment=True,
     random_state=42,
 )
+
+est_cf.fit(Y=df["purchased"], T=df["treated"], X=df[["loyalty_score", "income"]])
+ate_cf = est_cf.ate(df[["loyalty_score", "income"]])
+print(f"CausalForestDML estimated ATE: {ate_cf:.4f}")
