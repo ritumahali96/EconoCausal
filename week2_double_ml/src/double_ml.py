@@ -74,3 +74,7 @@ df["ite"] = est_cf.effect(df[["loyalty_score", "income"]])
 
 print(df[["customer_id", "loyalty_score", "income", "discount_given", "ite"]]
       .sort_values("ite", ascending=False).head(10))
+
+# CAUTION: top-ranked customers may cluster in sparse regions of the
+# confounder space (e.g. very high income), where the model has little
+# data and can produce noisy, overconfident estimates.
