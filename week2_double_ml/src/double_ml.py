@@ -24,3 +24,6 @@ est = LinearDML(
 # model_t predicts treated from confounders alone.
 # DML uses the leftover prediction error from both to isolate the
 # true causal effect, cleaned of confounder bias.
+
+# discrete_treatment=True tells EconML that T is a category (0/1),
+# not a continuous number -- required when model_t is a Classifier.
