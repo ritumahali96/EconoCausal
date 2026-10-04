@@ -138,3 +138,5 @@ plt.tight_layout()
 
 plt.savefig("week2_double_ml/docs/qini_curve.png", dpi=150)
 print("Saved week2_double_ml/docs/qini_curve.png")
+
+assert df["ite"].isnull().sum() == 0, "ite column must not contain missing values"
