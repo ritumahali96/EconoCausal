@@ -81,3 +81,8 @@ print(df[["customer_id", "loyalty_score", "income", "discount_given", "ite"]]
 
 print(df["ite"].describe())
 print(f"Customers with income > 100: {(df['income'] > 100).sum()} out of {len(df)}")
+
+# Finding: a small fraction of customers have very high income, giving
+# the model little data there. Combined with a true effect that does
+# NOT vary by income/loyalty, this confirms individual ITE values carry
+# real noise -- decile-level grouping (next) is needed to see signal.
