@@ -78,3 +78,6 @@ print(df[["customer_id", "loyalty_score", "income", "discount_given", "ite"]]
 # CAUTION: top-ranked customers may cluster in sparse regions of the
 # confounder space (e.g. very high income), where the model has little
 # data and can produce noisy, overconfident estimates.
+
+print(df["ite"].describe())
+print(f"Customers with income > 100: {(df['income'] > 100).sum()} out of {len(df)}")
