@@ -12,3 +12,10 @@ df["treated"] = (df["discount_given"] > 0).astype(int)
 from econml.dml import LinearDML
 
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+
+est = LinearDML(
+    model_y=RandomForestRegressor(n_estimators=100, random_state=42),
+    model_t=RandomForestClassifier(n_estimators=100, random_state=42),
+    discrete_treatment=True,
+    random_state=42,
+)
