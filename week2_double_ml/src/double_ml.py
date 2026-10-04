@@ -69,3 +69,74 @@ print(f"CausalForestDML estimated ATE: {ate_cf:.4f}")
 # below the true value. This suggests the gap is driven by data
 # overlap, not estimator choice -- no model can fully compensate for
 # weak overlap between treated/untreated groups on confounders.
+
+df["ite"] = est_cf.effect(df[["loyalty_score", "income"]])
+
+print(df[["customer_id", "loyalty_score", "income", "discount_given", "ite"]]
+      .sort_values("ite", ascending=False).head(10))
+
+# CAUTION: top-ranked customers may cluster in sparse regions of the
+# confounder space (e.g. very high income), where the model has little
+# data and can produce noisy, overconfident estimates.
+
+print(df["ite"].describe())
+print(f"Customers with income > 100: {(df['income'] > 100).sum()} out of {len(df)}")
+
+# Finding: a small fraction of customers have very high income, giving
+# the model little data there. Combined with a true effect that does
+# NOT vary by income/loyalty, this confirms individual ITE values carry
+# real noise -- decile-level grouping (next) is needed to see signal.
+
+df["decile"] = pd.qcut(df["ite"], 10, labels=False, duplicates="drop")
+df["decile"] = 9 - df["decile"]
+
+uplift_by_decile = df.groupby("decile", group_keys=False).apply(
+    lambda g: g.loc[g["treated"] == 1, "purchased"].mean() - g.loc[g["treated"] == 0, "purchased"].mean(),
+    include_groups=False,
+)
+
+print(uplift_by_decile.sort_index())
+
+# Finding: uplift trends downward from decile 0 to decile 9 overall,
+# confirming the model's ranking carries real signal, despite
+# individual-level noise -- exactly why grouping matters for evaluation.
+
+import matplotlib.pyplot as plt
+
+sorted_uplift = uplift_by_decile.sort_index()
+plt.figure(figsize=(8, 5))
+plt.bar(sorted_uplift.index.astype(str), sorted_uplift.values, color="#2a9d8f")
+plt.axhline(0, color="black", linewidth=0.8)
+plt.xlabel("Decile (0 = highest predicted ITE / best targets, 9 = lowest)")
+plt.ylabel("Observed uplift (treated - untreated purchase rate)")
+plt.title("Uplift by ITE Decile")
+plt.tight_layout()
+
+plt.savefig("week2_double_ml/docs/uplift_chart.png", dpi=150)
+print("Saved week2_double_ml/docs/uplift_chart.png")
+
+df_sorted = df.sort_values("ite", ascending=False).reset_index(drop=True)
+cum_treated_purchases = (df_sorted["treated"] * df_sorted["purchased"]).cumsum()
+cum_untreated_purchases = ((1 - df_sorted["treated"]) * df_sorted["purchased"]).cumsum()
+cum_treated_count = df_sorted["treated"].cumsum()
+cum_untreated_count = (1 - df_sorted["treated"]).cumsum()
+
+qini = cum_treated_purchases - cum_untreated_purchases * (
+    cum_treated_count / cum_untreated_count.replace(0, np.nan)
+)
+qini = qini.fillna(0)
+random_baseline = np.linspace(0, qini.iloc[-1], len(qini))
+
+plt.figure(figsize=(8, 5))
+plt.plot(qini.values, label="Our model (ranked by ITE)", color="#2a9d8f", linewidth=2)
+plt.plot(random_baseline, label="Random targeting", color="gray", linestyle="--")
+plt.xlabel("Number of customers targeted (ranked best to worst)")
+plt.ylabel("Cumulative incremental purchases")
+plt.title("Qini Curve: Our Model vs Random Targeting")
+plt.legend()
+plt.tight_layout()
+
+plt.savefig("week2_double_ml/docs/qini_curve.png", dpi=150)
+print("Saved week2_double_ml/docs/qini_curve.png")
+
+assert df["ite"].isnull().sum() == 0, "ite column must not contain missing values"
