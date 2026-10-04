@@ -18,3 +18,16 @@ value -- targeting the top-ranked customers yields substantially more
 incremental purchases than targeting randomly, for the same budget.
 Both curves converge at the end, since targeting everyone is
 equivalent regardless of order.
+
+## Summary of findings
+- LinearDML and CausalForestDML gave similar ATE estimates, both below
+  the true average effect -- estimator choice was not the main driver
+  of error.
+- The likely cause is weak overlap: loyalty/income strongly predicted
+  who received a discount, leaving few comparable "twins" across
+  treatment groups.
+- Despite noisy individual ITE values, decile-level uplift and the
+  Qini curve both show the model's ranking carries real, usable signal
+  for targeting decisions.
+
+Status: Week 2 Double ML and uplift analysis complete.
