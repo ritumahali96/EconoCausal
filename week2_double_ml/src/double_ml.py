@@ -51,3 +51,12 @@ print(f"Gap:                      {abs(true_ate - ate):.4f}")
 # overlap -- loyal/high-income customers almost always got a discount,
 # so there are few comparable "twins" across treatment groups for the
 # model to learn the clean effect from.
+
+from econml.dml import CausalForestDML
+
+est_cf = CausalForestDML(
+    model_y=RandomForestRegressor(n_estimators=100, random_state=42),
+    model_t=RandomForestClassifier(n_estimators=100, random_state=42),
+    discrete_treatment=True,
+    random_state=42,
+)
