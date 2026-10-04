@@ -135,3 +135,6 @@ plt.ylabel("Cumulative incremental purchases")
 plt.title("Qini Curve: Our Model vs Random Targeting")
 plt.legend()
 plt.tight_layout()
+
+plt.savefig("week2_double_ml/docs/qini_curve.png", dpi=150)
+print("Saved week2_double_ml/docs/qini_curve.png")
