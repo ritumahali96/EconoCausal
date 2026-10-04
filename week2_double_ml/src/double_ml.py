@@ -37,3 +37,5 @@ est.fit(
 print("LinearDML trained!")
 
 ate = est.ate(df[["loyalty_score", "income"]])
+
+print(f"LinearDML estimated ATE: {ate:.4f}")
