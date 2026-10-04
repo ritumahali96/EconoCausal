@@ -96,3 +96,7 @@ uplift_by_decile = df.groupby("decile", group_keys=False).apply(
 )
 
 print(uplift_by_decile.sort_index())
+
+# Finding: uplift trends downward from decile 0 to decile 9 overall,
+# confirming the model's ranking carries real signal, despite
+# individual-level noise -- exactly why grouping matters for evaluation.
