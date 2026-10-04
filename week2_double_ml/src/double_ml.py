@@ -126,3 +126,12 @@ qini = cum_treated_purchases - cum_untreated_purchases * (
 )
 qini = qini.fillna(0)
 random_baseline = np.linspace(0, qini.iloc[-1], len(qini))
+
+plt.figure(figsize=(8, 5))
+plt.plot(qini.values, label="Our model (ranked by ITE)", color="#2a9d8f", linewidth=2)
+plt.plot(random_baseline, label="Random targeting", color="gray", linestyle="--")
+plt.xlabel("Number of customers targeted (ranked best to worst)")
+plt.ylabel("Cumulative incremental purchases")
+plt.title("Qini Curve: Our Model vs Random Targeting")
+plt.legend()
+plt.tight_layout()
