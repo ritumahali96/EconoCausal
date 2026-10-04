@@ -69,3 +69,5 @@ print(f"CausalForestDML estimated ATE: {ate_cf:.4f}")
 # below the true value. This suggests the gap is driven by data
 # overlap, not estimator choice -- no model can fully compensate for
 # weak overlap between treated/untreated groups on confounders.
+
+df["ite"] = est_cf.effect(df[["loyalty_score", "income"]])
