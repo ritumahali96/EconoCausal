@@ -114,3 +114,9 @@ plt.tight_layout()
 
 plt.savefig("week2_double_ml/docs/uplift_chart.png", dpi=150)
 print("Saved week2_double_ml/docs/uplift_chart.png")
+
+df_sorted = df.sort_values("ite", ascending=False).reset_index(drop=True)
+cum_treated_purchases = (df_sorted["treated"] * df_sorted["purchased"]).cumsum()
+cum_untreated_purchases = ((1 - df_sorted["treated"]) * df_sorted["purchased"]).cumsum()
+cum_treated_count = df_sorted["treated"].cumsum()
+cum_untreated_count = (1 - df_sorted["treated"]).cumsum()
