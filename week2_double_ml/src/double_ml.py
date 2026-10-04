@@ -19,3 +19,8 @@ est = LinearDML(
     discrete_treatment=True,
     random_state=42,
 )
+
+# model_y predicts purchased from confounders alone (ignoring discount).
+# model_t predicts treated from confounders alone.
+# DML uses the leftover prediction error from both to isolate the
+# true causal effect, cleaned of confounder bias.
