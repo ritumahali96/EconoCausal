@@ -89,3 +89,8 @@ print(f"Customers with income > 100: {(df['income'] > 100).sum()} out of {len(df
 
 df["decile"] = pd.qcut(df["ite"], 10, labels=False, duplicates="drop")
 df["decile"] = 9 - df["decile"]
+
+uplift_by_decile = df.groupby("decile", group_keys=False).apply(
+    lambda g: g.loc[g["treated"] == 1, "purchased"].mean() - g.loc[g["treated"] == 0, "purchased"].mean(),
+    include_groups=False,
+)
