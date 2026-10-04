@@ -39,3 +39,6 @@ print("LinearDML trained!")
 ate = est.ate(df[["loyalty_score", "income"]])
 
 print(f"LinearDML estimated ATE: {ate:.4f}")
+
+true_effect_per_10_dollars = 0.04
+true_ate = (true_effect_per_10_dollars * (df.loc[df["treated"] == 1, "discount_given"] / 10)).mean()
