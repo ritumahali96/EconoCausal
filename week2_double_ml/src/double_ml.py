@@ -33,3 +33,5 @@ est.fit(
     T=df["treated"],
     X=df[["loyalty_score", "income"]],
 )
+
+print("LinearDML trained!")
