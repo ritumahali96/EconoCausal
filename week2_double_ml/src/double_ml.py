@@ -42,3 +42,7 @@ print(f"LinearDML estimated ATE: {ate:.4f}")
 
 true_effect_per_10_dollars = 0.04
 true_ate = (true_effect_per_10_dollars * (df.loc[df["treated"] == 1, "discount_given"] / 10)).mean()
+
+print(f"True ATE (ground truth):  {true_ate:.4f}")
+print(f"LinearDML estimated ATE:  {ate:.4f}")
+print(f"Gap:                      {abs(true_ate - ate):.4f}")
