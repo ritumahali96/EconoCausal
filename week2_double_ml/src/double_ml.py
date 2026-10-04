@@ -4,3 +4,7 @@ import numpy as np
 df = pd.read_csv("week1_causal_graphing/data/retail_campaign_data.csv")
 
 df["treated"] = (df["discount_given"] > 0).astype(int)
+
+# NOTE: discount_given has 3 values (0/10/20). We simplify to binary
+# treated (0/1) for this first DML pass, since EconML's core estimators
+# work most cleanly with binary or continuous treatment.
