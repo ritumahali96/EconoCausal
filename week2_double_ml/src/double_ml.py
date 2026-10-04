@@ -46,3 +46,8 @@ true_ate = (true_effect_per_10_dollars * (df.loc[df["treated"] == 1, "discount_g
 print(f"True ATE (ground truth):  {true_ate:.4f}")
 print(f"LinearDML estimated ATE:  {ate:.4f}")
 print(f"Gap:                      {abs(true_ate - ate):.4f}")
+
+# NOTE: LinearDML underestimates the true effect. Likely cause: weak
+# overlap -- loyal/high-income customers almost always got a discount,
+# so there are few comparable "twins" across treatment groups for the
+# model to learn the clean effect from.
